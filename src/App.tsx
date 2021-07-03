@@ -1,26 +1,20 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
+import { Header } from './components/Header/Header'
+import { Trends } from './pages/trends/Trends'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+type AppPropsType = {
+
 }
 
-export default App;
+export const App: React.FC<AppPropsType> = () => {
+  return (
+    <div className="bg-gray-dark font-body">
+      <div className="p-10">
+        <Header />
+        <div className="container mx-auto p-10 bg-gray-darkest border-b-2 rounded-b-lg border-gray-darkest">
+          <Trends />
+        </div>
+      </div>
+    </div>
+  )
+}
