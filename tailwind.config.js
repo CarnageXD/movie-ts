@@ -14,6 +14,13 @@ module.exports = {
           light: '#14151d',
           lightest: '#171923',
         }
+      },
+      height: {
+        sm: '8px',
+        md: '16px',
+        lg: '24px',
+        xl: '48px',
+        'imgList': '425px'
       }
     },
   },
