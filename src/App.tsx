@@ -1,6 +1,7 @@
 import React from 'react'
 import { Route, Switch } from 'react-router-dom'
 import { Header } from './components/Header/Header'
+import { MovieDetails } from './pages/movieDetails/MovieDetails'
 import { SearchBy } from './pages/search/SearchBy'
 import { Trends } from './pages/trends/Trends'
 
@@ -21,6 +22,9 @@ export const App: React.FC<AppPropsType> = () => {
             </Route>
             <Route path="/search">
               <SearchBy />
+            </Route>
+            <Route path="/details/:id">
+              <MovieDetails />
             </Route>
           </Switch>
         </div>

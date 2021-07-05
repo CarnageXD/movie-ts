@@ -7,3 +7,16 @@ html, body {
     background-color: rgba(15, 16, 22, var(--tw-bg-opacity));
     height: 100%;
 }
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #21252a;
+  border-radius: 100vh;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #4b545f;
+}
