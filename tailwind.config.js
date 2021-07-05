@@ -20,12 +20,17 @@ module.exports = {
         md: '16px',
         lg: '24px',
         xl: '48px',
-        'imgList': '425px'
+        'imgList': '425px',
+      },
+      width: {
+        'imgList': '288px',
       }
     },
   },
   variants: {
-    extend: {},
+    extend: {
+      filter: ['hover', 'focus'],
+    },
   },
   plugins: [],
 }
