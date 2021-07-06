@@ -1,6 +1,6 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
-import { ActionButton } from '../../common/ActionButton'
+import { ActionButton } from '../../common/buttons/ActionButton'
 
 type MoviePropsType = {
     poster?: string | null
@@ -18,7 +18,7 @@ export const Movie: React.FC<MoviePropsType> = ({ poster, title, description, re
                 <div className="relative">
                     {score ?
                         <div className="flex items-center justify-center absolute w-9 h-9 bg-yellow-400 rounded-full index-10 top-3 right-3 text-black font-semibold">
-                            {score}
+                            {(score - 1).toPrecision(2)}
                         </div>
                         : null
                     }
