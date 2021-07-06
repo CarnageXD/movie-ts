@@ -20,7 +20,7 @@ module.exports = {
         md: '16px',
         lg: '24px',
         xl: '48px',
-        'imgList': '425px',
+        'imgList': '465px',
       },
       width: {
         'imgList': '292px',
