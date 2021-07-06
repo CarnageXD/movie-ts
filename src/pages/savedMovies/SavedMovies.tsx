@@ -5,18 +5,23 @@ import { MoviesDetailsApiResponse } from '../../types/movieTypes'
 
 export const SavedMovies = () => {
     const [savedMovies, setSavedMovies] = useState<MoviesDetailsApiResponse[]>([])
+    const [isLoading, setIsLoading] = useState<boolean>(false)
 
     useEffect(() => {
+        setIsLoading(true)
         const localSavedMovies = localStorage.getItem("saved")
         const savedMovies = localSavedMovies ? JSON.parse(localSavedMovies) : []
         setSavedMovies(savedMovies)
+        setIsLoading(false)
     }, [])
 
     return (
-        <div className="flex flex-wrap">
+        <div>
             {savedMovies.length > 0
                 ?
-                <MovieList movies={savedMovies} />
+                <div className="flex justify-between flex-col items-center md:items-start md:flex-row md:flex-wrap">
+                    <MovieList isLoading={isLoading} movies={savedMovies} />
+                </div>
                 :
                 <h2 className="text-xl text-gray">There no saved movies by now</h2>}
 

@@ -1,10 +1,10 @@
 import React from 'react'
-import axios from 'axios'
 import { useState } from 'react'
 import { useEffect } from 'react'
 import { Paginator } from '../../components/Paginator/Paginator'
 import { MovieList } from '../../components/MovieList/MovieList'
-import { GetMoviesApiResponse, InfoMoviesType } from '../../types/movieTypes'
+import { InfoMoviesType } from '../../types/movieTypes'
+import { getMoviesDataAPI } from '../../api'
 
 export const Trends: React.FC<InfoMoviesType> = () => {
     const [isLoading, setIsLoading] = useState<boolean>(false)
@@ -13,14 +13,14 @@ export const Trends: React.FC<InfoMoviesType> = () => {
     const [totalPagesCount, setTotalPagesCount] = useState<number>(1)
 
     useEffect(() => {
-        axios.get<GetMoviesApiResponse>(`https://api.themoviedb.org/3/movie/popular?api_key=e5bf0d2a91e3d8acf07245cbd2950b9f&language=en-US&page=${currentPage}`)
-            .then((resp) => {
-                setIsLoading(true)
-                console.log(resp.data)
-                setTotalPagesCount(resp.data.total_pages)
-                setMovies(resp.data.results)
-                setIsLoading(false)
-            })
+        async function fetchData() {
+            setIsLoading(true)
+            const data = await getMoviesDataAPI.getPopularMovies(currentPage)
+            setTotalPagesCount(data.total_pages)
+            setMovies(data.results)
+            setIsLoading(false)
+        }
+        fetchData()
     }, [currentPage])
 
     const onPageChanged = (page: number) => {
@@ -28,18 +28,17 @@ export const Trends: React.FC<InfoMoviesType> = () => {
     }
 
     return (
-        isLoading ? <h2>Loading...</h2> :
+        <div>
             <div>
-                <div>
-                    <div className="flex justify-between flex-wrap">
-                        <MovieList movies={movies} />
-                    </div>
-                    <div>
-                        <Paginator currentPage={currentPage} onPageChanged={onPageChanged} totalPagesCount={totalPagesCount} />
-                    </div>
+                <div className="flex justify-between flex-col items-center md:items-start md:flex-row md:flex-wrap">
+                    <MovieList isLoading={isLoading} movies={movies} />
                 </div>
-                {/* <div>hot</div>
-            <div>filter</div> */}
+                <div>
+                    {isLoading ? null : <Paginator currentPage={currentPage} onPageChanged={onPageChanged} totalPagesCount={totalPagesCount} />}
+
+                </div>
             </div>
+
+        </div>
     )
 }

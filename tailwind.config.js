@@ -23,7 +23,7 @@ module.exports = {
         'imgList': '425px',
       },
       width: {
-        'imgList': '288px',
+        'imgList': '292px',
       }
     },
   },

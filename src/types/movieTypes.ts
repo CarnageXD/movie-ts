@@ -17,7 +17,7 @@ export type InfoMoviesType = {
 
 export type GetMoviesApiResponse = {
     page: number
-    total_result: number
+    total_results: number
     total_pages: number
     results: InfoMoviesType[]
 }
@@ -73,4 +73,14 @@ export type InfoMovieTrailer = {
     site?: string
     size?: number
     type?: string
+}
+
+export type MoviePropsType = {
+    poster?: string | null
+    title?: string
+    release?: string
+    description?: string
+    id?: number
+    score?: number
+    isLoading: boolean
 }
