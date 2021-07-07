@@ -72,9 +72,17 @@ export const MovieDetails: React.FC = () => {
                     </div>
 
                     <div className="flex flex-col flex-1 relative items-center lg:items-start">
-                        <div onClick={() => saveToLocalStorage()} className="relative lg:absolute top-0 right-0">
-                            {isSaved ? <AcceptedButton text='Added ' /> : <ActionButton text='Add to watch later' />}
-                        </div>
+                        {isSaved
+                            ?
+                            <div className="relative lg:absolute top-0 right-0">
+                                <AcceptedButton text='Added' />
+                            </div>
+                            :
+                            <div onClick={() => saveToLocalStorage()} className="relative lg:absolute top-0 right-0">
+                                <ActionButton text='Add to watch later' />
+                            </div>
+                        }
+
 
                         {/* Description */}
                         <div className="flex justify-between">
@@ -86,7 +94,7 @@ export const MovieDetails: React.FC = () => {
                         <div className="mt-6 mb-6 flex flex-col items-center lg:items-start">
                             <span>{movieDetails?.release_date?.slice(0, 4)}</span>
                             <h2 className="text-5xl text-white">{movieDetails?.original_title}</h2>
-                            <p className="italic">{movieDetails?.tagline}</p>
+                            <p className="italic text-center">{movieDetails?.tagline}</p>
                         </div>
                         <ul className="flex flex-wrap justify-center md:justify-start mb-4 text-xl md:text-2xl list-disc lg:ml-5 ml-12">
                             {movieDetails?.genres?.map((genre, index) => <li key={index} className="mr-10">{genre.name}</li>)}

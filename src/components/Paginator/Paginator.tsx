@@ -31,12 +31,18 @@ export const Paginator: React.FC<PaginatorPropsType> = ({ currentPage, onPageCha
         }
     }
     return (
-        <div className="flex text-gray items-center justify-around mt-12">
-            {currentPage > 5 ? <div onClick={() => (onPageChanged(1))} className="hover:text-yellow-400 transition-all cursor-pointer">В начало</div> : null}
-            {pages.map(page => <div key={page} onClick={() => onPageChanged(page)}
-                className={`w-12 h-12 border-2 cursor-pointer rounded-full flex items-center justify-center ${page === currentPage ? 'border-yellow-400' : ''} hover:border-yellow-400 transition-all`}
-            >{page}</div>)}
-            {currentPage !== totalPagesCount ? <div onClick={() => (onPageChanged(totalPagesCount))} className="hover:text-yellow-400 transition-all cursor-pointer">В конец</div> : null}
+        <div>
+            <div className="flex text-gray items-center justify-around mt-12 hidden md:flex">
+                {currentPage > 5 ? <div onClick={() => (onPageChanged(1))} className="hover:text-yellow-400 transition-all cursor-pointer mr-2">В начало</div> : null}
+                {pages.map(page => <div key={page} onClick={() => onPageChanged(page)}
+                    className={`w-12 h-12 border-2 cursor-pointer rounded-full flex items-center justify-center ${page === currentPage ? 'border-yellow-400' : ''} hover:border-yellow-400 transition-all`}
+                >{page}</div>)}
+                {currentPage !== totalPagesCount ? <div onClick={() => (onPageChanged(totalPagesCount))} className="hover:text-yellow-400 transition-all cursor-pointer ml-2">В конец</div> : null}
+            </div>
+            <div className="text-4xl text-gray flex justify-between md:hidden">
+                <div onClick={() => onPageChanged(--currentPage)} className={`h-16 w-16 border-2 rounded-full text-center leading-relaxed ${currentPage === 1 ? 'invisible' : ''}`}>&#8592;</div>
+                <div onClick={() => onPageChanged(++currentPage)} className={`h-16 w-16 border-2 rounded-full text-center leading-relaxed ${currentPage === totalPagesCount ? 'invisible' : ''}`}>&#8594;</div>
+            </div>
         </div>
     )
 }

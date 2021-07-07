@@ -2,7 +2,7 @@ import React from 'react'
 import { InfoMoviesType, MoviesDetailsApiResponse } from '../../types/movieTypes'
 import { Movie } from './Movie/Movie'
 
-export const MovieList: React.FC<{ movies: InfoMoviesType[] | MoviesDetailsApiResponse[]; isLoading: boolean }> = ({ movies, isLoading }) => {
+export const MovieList: React.FC<{ movies: InfoMoviesType[] | MoviesDetailsApiResponse[]; isLoading: boolean; }> = ({ movies, isLoading }) => {
     return (
         <>
             {
