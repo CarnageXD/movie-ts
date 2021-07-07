@@ -14,13 +14,9 @@ export const getMoviesDataAPI = {
         return instance.get<{ id: number, results: InfoMovieTrailer[] }>(`/movie/${id}/videos?api_key=e5bf0d2a91e3d8acf07245cbd2950b9f&language=en-US`)
             .then(response => response.data.results[0])
     },
-    async getSimilarMovies(id: string): Promise<InfoMoviesType[] | void> {
-        try {
-            const response = await instance.get<GetMoviesApiResponse>(`/movie/${id}/similar?api_key=e5bf0d2a91e3d8acf07245cbd2950b9f&language=en-US`);
-            return response.data.results;
-        } catch (err) {
-            return console.error(err);
-        }
+    async getSimilarMovies(id: string) {
+        const response = await instance.get<GetMoviesApiResponse>(`/movie/${id}/similar?api_key=e5bf0d2a91e3d8acf07245cbd2950b9f&language=en-US`);
+        return response.data.results;
     },
     async getPopularMovies(currentPage: number): Promise<GetMoviesApiResponse | void> {
         try {

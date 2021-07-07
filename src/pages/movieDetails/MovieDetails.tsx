@@ -24,10 +24,8 @@ export const MovieDetails: React.FC = () => {
             setIsLoading(true)
             setMovieDetails(await getMoviesDataAPI.getMovieDetails(id))
             setTrailers(await getMoviesDataAPI.getMovieTrailer(id))
-            const similarMoviesData = await getMoviesDataAPI.getSimilarMovies(id)
-            if (similarMoviesData) {
-                setSimilarMovies(similarMovies)
-            }
+            setSimilarMovies(await getMoviesDataAPI.getSimilarMovies(id))
+
             setIsLoading(false)
         }
         fetchData()
