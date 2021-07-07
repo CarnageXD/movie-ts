@@ -1,5 +1,5 @@
 import axios from "axios";
-import { GetMoviesApiResponse, InfoMoviesType, InfoMovieTrailer, MoviesDetailsApiResponse } from "./types/movieTypes";
+import { GetMoviesApiResponse, InfoMovieTrailer, MoviesDetailsApiResponse } from "./types/movieTypes";
 
 const instance = axios.create({
     baseURL: "https://api.themoviedb.org/3/"

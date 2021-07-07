@@ -7,6 +7,8 @@ import { AcceptedButton } from '../../components/common/buttons/AcceptedButton'
 import { ActionButton } from '../../components/common/buttons/ActionButton'
 import { Preloader } from '../../components/common/preloader/Preloader'
 import { MoviesDetailsApiResponse, InfoMoviesType, InfoMovieTrailer } from '../../types/movieTypes'
+import clock from './../../assets/icons/clock.png'
+import preposter from './../../assets/preposter/preposter.png'
 
 export const MovieDetails: React.FC = () => {
     const [movieDetails, setMovieDetails] = useState<MoviesDetailsApiResponse | null>(null)
@@ -61,7 +63,7 @@ export const MovieDetails: React.FC = () => {
                                 : null
                             }
                             <img onLoad={() => setIsImg(true)} className="h-imgList w-imgList"
-                                src={movieDetails?.poster_path ? isImg ? `https://image.tmdb.org/t/p/w500/${movieDetails?.poster_path}` : `/img/preposter/preposter.png` : `/img/preposter/preposter.png`}
+                                src={movieDetails?.poster_path ? isImg ? `https://image.tmdb.org/t/p/w500/${movieDetails?.poster_path}` : preposter : preposter}
                                 alt="poster" />
                         </div>
                         <div onClick={() => setIsTrailerOpened(true)}>
@@ -77,7 +79,7 @@ export const MovieDetails: React.FC = () => {
                         {/* Description */}
                         <div className="flex justify-between">
                             <div className="flex items-center">
-                                <img height={16} width={16} src="/img/icons/clock.png" alt="" />
+                                <img height={16} width={16} src={clock} alt="" />
                                 <span className="ml-1">{movieDetails?.runtime} minutes</span>
                             </div>
                         </div>

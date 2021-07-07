@@ -3,6 +3,7 @@ import { Paginator } from '../../components/Paginator/Paginator'
 import { MovieList } from '../../components/MovieList/MovieList'
 import { InfoMoviesType } from '../../types/movieTypes'
 import { getMoviesDataAPI } from '../../api'
+import searchIcon from './../../assets/icons/search.png'
 
 
 export const SearchBy: React.FC<InfoMoviesType> = () => {
@@ -39,7 +40,7 @@ export const SearchBy: React.FC<InfoMoviesType> = () => {
         <div>
             <div className="w-full rounded-lg bg-gray-light flex items-center mb-10">
                 <input onChange={searchQueryHandler} className="w-full border-0 p-3 bg-transparent outline-none text-gray " placeholder="Search something, for example 'The Shawshank Redemption'..."></input>
-                <img className="pr-4 cursor-pointer" src='/img/icons/search.png' alt="searchButton" />
+                <img className="pr-4 cursor-pointer" src={searchIcon} alt="searchButton" />
             </div>
             <div>
                 <div className="flex justify-between flex-col items-center md:items-start md:flex-row md:flex-wrap">

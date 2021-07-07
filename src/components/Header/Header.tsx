@@ -1,5 +1,6 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
+import logo from './../../assets/icons/logo.png'
 
 export const Header: React.FC = () => {
     return (
@@ -8,7 +9,7 @@ export const Header: React.FC = () => {
                 <div className="pt-2 pb-2">
                     <NavLink to='/trends'>
                         <div className="flex items-center">
-                            <img className="lg:w-12 lg:h-12 sm:w-8 sm:h-8 h-8 w-8 " src="/img/icons/logo.png" alt="siteLogo" />
+                            <img className="lg:w-12 lg:h-12 sm:w-8 sm:h-8 h-8 w-8 " src={logo} alt="siteLogo" />
                             <p className="lg:text-5xl md:text-4xl sm:text-3xl text-3xl text-white">Movielike</p>
                         </div>
                     </NavLink>
