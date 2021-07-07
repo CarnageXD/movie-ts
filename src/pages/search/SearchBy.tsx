@@ -11,18 +11,24 @@ export const SearchBy: React.FC<InfoMoviesType> = () => {
     const [currentPage, setCurrentPage] = useState<number>(1)
     const [totalPagesCount, setTotalPagesCount] = useState<number>(1)
     const [isLoading, setIsLoading] = useState<boolean>(false)
+    const [isFetching, setIsFetching] = useState<boolean>(false)
 
-    const onSearchClicked = async () => {
-        const data = await getMoviesDataAPI.getMoviesBySearch(searchMovie, currentPage)
-        setMovies(data.results)
-        setTotalPagesCount(data.total_pages)
-        setIsLoading(false)
+    const onSearchClicked = () => {
+        setIsFetching(true)
     }
 
     useEffect(() => {
-        setIsLoading(true)
-        onSearchClicked()
-    }, [currentPage])
+        async function fetchData() {
+            setIsLoading(true)
+            const data = await getMoviesDataAPI.getMoviesBySearch(searchMovie, currentPage)
+            setMovies(data.results)
+            setTotalPagesCount(data.total_pages)
+            setIsLoading(false)
+            setIsFetching(false)
+        }
+        fetchData()
+
+    }, [currentPage, isFetching, searchMovie])
 
     const onPageChanged = (page: number) => {
         setCurrentPage(page)

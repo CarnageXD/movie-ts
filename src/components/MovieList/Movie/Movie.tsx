@@ -4,7 +4,7 @@ import { MoviePropsType } from '../../../types/movieTypes'
 import { ActionButton } from '../../common/buttons/ActionButton'
 import { Preloader } from '../../common/preloader/Preloader'
 
-export const Movie: React.FC<MoviePropsType> = ({ poster, title, description, release, id, score, isLoading }) => {
+export const Movie: React.FC<MoviePropsType> = ({ poster, title, description, id, score, isLoading }) => {
     return (
         <>
             {isLoading ? <Preloader /> :

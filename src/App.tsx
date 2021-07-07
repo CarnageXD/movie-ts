@@ -6,11 +6,7 @@ import { SavedMovies } from './pages/savedMovies/SavedMovies'
 import { SearchBy } from './pages/search/SearchBy'
 import { Trends } from './pages/trends/Trends'
 
-type AppPropsType = {
-
-}
-
-export const App: React.FC<AppPropsType> = () => {
+export const App: React.FC = () => {
   return (
     <div className="bg-gray-dark font-body ">
       <div className="p-10">
