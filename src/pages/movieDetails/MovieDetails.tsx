@@ -15,6 +15,7 @@ export const MovieDetails: React.FC = () => {
     const [isSaved, setIsSaved] = useState(false)
     const [isTrailerOpened, setIsTrailerOpened] = useState(false)
     const [isLoading, setIsLoading] = useState(false)
+    const [isImg, setIsImg] = useState(false)
 
     const { id } = useParams<{ id: string }>()
 
@@ -23,7 +24,10 @@ export const MovieDetails: React.FC = () => {
             setIsLoading(true)
             setMovieDetails(await getMoviesDataAPI.getMovieDetails(id))
             setTrailers(await getMoviesDataAPI.getMovieTrailer(id))
-            setSimilarMovies(await getMoviesDataAPI.getSimilarMovies(id))
+            const similarMoviesData = await getMoviesDataAPI.getSimilarMovies(id)
+            if (similarMoviesData) {
+                setSimilarMovies(similarMovies)
+            }
             setIsLoading(false)
         }
         fetchData()
@@ -58,7 +62,9 @@ export const MovieDetails: React.FC = () => {
                                 </div>
                                 : null
                             }
-                            <img className="h-imgList w-imgList" src={`https://image.tmdb.org/t/p/w500${movieDetails?.poster_path}`} alt="poster" />
+                            <img onLoad={() => setIsImg(true)} className="h-imgList w-imgList"
+                                src={movieDetails?.poster_path ? isImg ? `https://image.tmdb.org/t/p/w500/${movieDetails?.poster_path}` : `/img/preposter/preposter.png` : `/img/preposter/preposter.png`}
+                                alt="poster" />
                         </div>
                         <div onClick={() => setIsTrailerOpened(true)}>
                             <ActionButton text="Watch trailer" />

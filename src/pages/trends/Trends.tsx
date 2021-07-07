@@ -16,8 +16,10 @@ export const Trends: React.FC<InfoMoviesType> = () => {
         async function fetchData() {
             setIsLoading(true)
             const data = await getMoviesDataAPI.getPopularMovies(currentPage)
-            setTotalPagesCount(data.total_pages)
-            setMovies(data.results)
+            if (data) {
+                setTotalPagesCount(data.total_pages)
+                setMovies(data.results)
+            }
             setIsLoading(false)
         }
         fetchData()

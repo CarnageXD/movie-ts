@@ -65,7 +65,7 @@ export type MoviesDetailsApiResponse = {
 }
 
 export type InfoMovieTrailer = {
-    id?: string
+    id?: number
     iso_639_1?: number
     iso_3166_1?: number
     key?: string
